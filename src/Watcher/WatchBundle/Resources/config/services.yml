@@ -1,0 +1,7 @@
+parameters:
+#    watcher_watch.example.class: Watcher\WatchBundle\Example
+
+services:
+#    watcher_watch.example:
+#        class: %watcher_watch.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

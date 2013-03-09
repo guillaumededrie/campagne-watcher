@@ -1,0 +1,4 @@
+watcher_watch:
+    resource: "@WatcherWatchBundle/Resources/config/routing.yml"
+    prefix:   /
+

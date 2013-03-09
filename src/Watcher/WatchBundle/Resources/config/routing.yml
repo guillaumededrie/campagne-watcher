@@ -1,0 +1,3 @@
+watcher_watch_homepage:
+    pattern:  /
+    defaults: { _controller: WatcherWatchBundle:Default:index }

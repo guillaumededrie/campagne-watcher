@@ -1,13 +1,91 @@
+<!-- app/Resources/views/base.html.twig -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - CampagneWatcher</title>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      .voting div {
+	text-align: center;
+      }
+    </style>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+  </head>
+  <body>
+    <div class="container">
+
+      <div>
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Accueil</a></li>
+          <li><a href="#see">See !</a></li>
+          <li><a href="#vote">Vote !</a></li>
+          <li><a href="#contact">Contact !</a></li>
+        </ul>
+        <h3 class="muted">CampagneWatcher</h3>
+      </div>
+
+      <hr>
+
+      <div class="jumbotron">
+        <h1>CampagneWatcher est de retour !</h1>
+        <p class="lead">Votez pour votre liste préférée et mettez la tout en haut ! Un seul vote par personne et par heure est autorisé et reflètent (ou pas) uniquement l'opinion des différents voteurs.</p>
+      </div>
+
+      <hr>
+
+      <div id="see">
+	<h2>See !</h2>
+	{% block tendances %}
+	{% endblock %}
+      </div>
+
+      <hr>
+
+      <div>
+	<h2>Vote !</h2>
+	<div class="row-fluid voting" id="vote">
+	  {% block vote %}
+	  {% endblock %}
+	</div>
+      </div>
+
+      <hr>
+
+      <div id="contact">
+	<h2>Contact !</h2>
+	Pour nous contacter Guillaume DEDRIE dedriegu@ensimag.fr.
+      </div>
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Company 2013</p>
+      </div>
+    </div>
+    
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+  </body>
 </html>
