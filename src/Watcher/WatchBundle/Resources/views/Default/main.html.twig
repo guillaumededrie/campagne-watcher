@@ -6,11 +6,24 @@
 {% block vote %}
 <div class="span6">
   <h3>Guililguilist</h3>
-  <p><a class="btn btn-large btn-primary" href="#">Je supporte la Guili</a></p>
+  <p><a data-toggle="modal" href="{{ path('watcher_vote', {'id' : 2})}}"  data-target="#modalVote" role="button" class="btn btn-large btn-primary" >Je supporte la Guili</a></p>
 </div>
 <div class="span6">
   <h3>Wall'E</h3>
-  <p><a class="btn btn-large btn-danger" href="#">Je supporte la Wall'Est</a></p>
+  <p><a data-toggle="modal" href="{{ path('watcher_vote', {'id' : 1})}}"  data-target="#modalVote" role="button" class="btn btn-large btn-danger" >Je supporte la Wall'Est</a></p>
+</div>
+
+
+<div id="modalVote" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalVoteLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="ModalVoteLabel">Valider</h3>
+  </div>
+  <div class="modal-body">
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
 </div>
 {% endblock %}
 
@@ -23,10 +36,17 @@
 
 
 {% block javascripts %}
+
+
 <script type="text/javascript">
 $(function () {
     var chart;
     $(document).ready(function() {
+
+        $("#modalVote").on('hide', function() {
+             $(this).removeData('modal');
+        });
+
         chart = new Highcharts.Chart({
             chart: {
                 renderTo: 'tendance',
