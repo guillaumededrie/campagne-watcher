@@ -1,11 +1,7 @@
 watcher_watch_homepage:
     pattern:  /
     defaults: { _controller: WatcherWatchBundle:Default:index }
-    requirements:
-        _method:  GET
 
 watcher_vote:
     pattern:  /vote/{id}
     defaults: { _controller: WatcherWatchBundle:Default:vote }
-    requirements:
-        _method:  GET

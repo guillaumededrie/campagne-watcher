@@ -47,6 +47,12 @@
         <h3 class="muted">CampagneWatcher</h3>
       </div>
 
+      {% for flashMessage in app.session.flashbag.get('notice') %}
+      <div class="alert">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	{{ flashMessage }}
+      </div>
+      {% endfor %}
       <hr>
 
       <div class="jumbotron">

@@ -1,3 +1,5 @@
-<form>
-  <input type="hidden" name="id" value="{{ id }}">
+<form action="{{ path('watcher_vote', {"id":id}) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
 </form>
