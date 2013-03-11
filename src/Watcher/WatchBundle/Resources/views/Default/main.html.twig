@@ -6,7 +6,7 @@
 {% block vote %}
 <div class="span6">
   <img src="http://placehold.it/150x150">
-  <h3>Guililguilist</h3>
+  <h3>Guiliguiliste</h3>
   <p><a data-toggle="modal" href="{{ path('watcher_vote', {'id' : 2})}}"  data-target="#modalVote" role="button" class="btn btn-large btn-primary" >Je supporte la Guili</a></p>
 </div>
 <div class="span6">
@@ -58,7 +58,7 @@ $(function () {
                 text: 'Votes'
             },
             subtitle: {
-                text: 'Sous titre'
+                text: 'Suivi des votes'
             },
             xAxis: {
                 type: 'datetime'
@@ -98,11 +98,11 @@ $(function () {
                 }
             },
             series: [{
-                name: 'Guili',
+                name: 'Guiliguiliste',
                 data: [[1362948149000,0]{% for vote in vote_guiliguilist %},[{{ (vote.datev|date('U') + 3600) * 1000 }},{{ vote.c }}]{% endfor %}]
     
             }, {
-                name: 'Wall-E',
+                name: 'Wall-List',
                 data: [[1362948149000,0]{% for vote in vote_wall_liste %},[{{ (vote.datev|date('U') + 3600) * 1000 }},{{ vote.c }}]{% endfor %}]
             }]
             ,
