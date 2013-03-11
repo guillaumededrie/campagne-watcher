@@ -5,3 +5,5 @@ watcher_watch_homepage:
 watcher_vote:
     pattern:  /vote/{id}
     defaults: { _controller: WatcherWatchBundle:Default:vote }
+    requirements:
+        id: \d+

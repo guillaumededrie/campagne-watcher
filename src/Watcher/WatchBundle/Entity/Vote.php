@@ -10,105 +10,138 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Vote
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+  const WALL_LISTE = 'wall-liste';
+  const GUILIGUILIST = 'guiliguilist';
+
+  /**
+   * @ORM\Id
+   * @ORM\Column(type="integer")
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  protected $id;
+
+  /**
+   * @ORM\Column(type="string", length=20)
+   */
+  protected $ip;
+
+  /**
+   * @ORM\Column(type="string", length=20)
+   */
+  protected $trigramme;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  protected $liste;
+
+  /**
+   * @ORM\Column(type="datetime")
+   */
+  protected $datevote;
+
+
+  /**
+   * Get id
+   *
+   * @return integer 
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  /**
+   * Set ip
+   *
+   * @param string $ip
+   * @return Vote
+   */
+  public function setIp($ip)
+  {
+    $this->ip = $ip;
+    
+    return $this;
+  }
+
+  /**
+   * Get ip
+   *
+   * @return string 
+   */
+  public function getIp()
+  {
+    return $this->ip;
+  }
+
+  /**
+   * Set datevote
+   *
+   * @param \DateTime $datevote
+   * @return Vote
+   */
+  public function setDatevote($datevote)
+  {
+    $this->datevote = $datevote;
+    
+    return $this;
+  }
+
+  /**
+   * Get datevote
+   *
+   * @return \DateTime 
+   */
+  public function getDatevote()
+  {
+    return $this->datevote;
+  }
 
     /**
-     * @ORM\Column(type="string", length=20)
-     */
-    protected $ip;
-
-    /**
-     * @ORM\Column(type="decimal", scale=2)
-     */
-    protected $price;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $datevote;
-
-
-    /**
-     * Get id
+     * Set liste
      *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set ip
-     *
-     * @param string $ip
+     * @param string $liste
      * @return Vote
      */
-    public function setIp($ip)
+    public function setListe($liste)
     {
-        $this->ip = $ip;
-    
-        return $this;
+      if (!in_array($liste, array(self::WALL_LISTE, self::GUILIGUILIST))) {
+	throw new \InvalidArgumentException("Invalid status");
+      }
+      
+      $this->liste = $liste;
     }
 
     /**
-     * Get ip
+     * Get liste
      *
      * @return string 
      */
-    public function getIp()
+    public function getListe()
     {
-        return $this->ip;
+        return $this->liste;
     }
 
     /**
-     * Set price
+     * Set trigramme
      *
-     * @param float $price
+     * @param string $trigramme
      * @return Vote
      */
-    public function setPrice($price)
+    public function setTrigramme($trigramme)
     {
-        $this->price = $price;
+        $this->trigramme = $trigramme;
     
         return $this;
     }
 
     /**
-     * Get price
+     * Get trigramme
      *
-     * @return float 
+     * @return string 
      */
-    public function getPrice()
+    public function getTrigramme()
     {
-        return $this->price;
-    }
-
-    /**
-     * Set datevote
-     *
-     * @param \DateTime $datevote
-     * @return Vote
-     */
-    public function setDatevote($datevote)
-    {
-        $this->datevote = $datevote;
-    
-        return $this;
-    }
-
-    /**
-     * Get datevote
-     *
-     * @return \DateTime 
-     */
-    public function getDatevote()
-    {
-        return $this->datevote;
+        return $this->trigramme;
     }
 }

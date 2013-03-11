@@ -11,7 +11,7 @@
 </div>
 <div class="span6">
   <img src="http://placehold.it/150x150">
-  <h3>Wall'E</h3>
+  <h3>Wall'List</h3>
   <p><a data-toggle="modal" href="{{ path('watcher_vote', {'id' : 1})}}"  data-target="#modalVote" role="button" class="btn btn-large btn-danger" >Je supporte la Wall'List</a></p>
 </div>
 
@@ -19,7 +19,7 @@
 <div id="modalVote" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalVoteLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="ModalVoteLabel">Valider</h3>
+    <h3 id="ModalVoteLabel">Valider votre vote</h3>
   </div>
   <div class="modal-body">
   </div>
@@ -72,7 +72,7 @@ $(function () {
             tooltip: {
                 formatter: function() {
                         return ''+
-                        Highcharts.dateFormat('%e. %b %Y, %H:00', this.x) +': '+ this.y +' votants';
+                        Highcharts.dateFormat('%e. %b %Y, %H H', this.x) +': '+ this.y +' votants';
                 }
             },
             plotOptions: {
@@ -94,24 +94,16 @@ $(function () {
                             }
                         }
                     },
-                    pointInterval: 3600000, // one hour
-                    pointStart: Date.UTC(2013, 2, 11, 0, 0, 0)
+                    pointStart: Date.UTC(2013, 2, 10, 0, 0, 0)
                 }
             },
             series: [{
                 name: 'Guili',
-                data: [4.3, 5.1, 4.3, 5.2, 5.4, 4.7, 3.5, 4.1, 5.6, 7.4, 6.9, 7.1,
-                    7.9, 7.9, 7.5, 6.7, 7.7, 7.7, 7.4, 7.0, 7.1, 5.8, 5.9, 7.4,
-                    8.2, 8.5, 9.4, 8.1, 10.9, 10.4, 10.9, 12.4, 12.1, 9.5, 7.5,
-                    7.1, 7.5, 8.1, 6.8, 3.4, 2.1, 1.9, 2.8, 2.9, 1.3, 4.4, 4.2,
-                    3.0, 3.0,7.1, 7.5, 8.1, 6.8, 3.4, 2.1, 1.9, 2.8, 2.9, 1.3, 4.4, 4.2,3.0, 3.0]
+                data: [[1362948149000,0]{% for vote in vote_guiliguilist %},[{{ (vote.datev|date('U') + 3600) * 1000 }},{{ vote.c }}]{% endfor %}]
     
             }, {
                 name: 'Wall-E',
-                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.3, 0.0,
-                    0.0, 0.4, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    0.0, 0.6, 1.2, 1.7, 0.7, 2.9, 4.1, 2.6, 3.7, 3.9, 1.7, 2.3,
-                    3.0, 3.3, 4.8, 5.0, 4.8, 5.0, 3.2, 2.0, 0.9, 0.4, 0.3, 0.5, 0.4]
+                data: [[1362948149000,0]{% for vote in vote_wall_liste %},[{{ (vote.datev|date('U') + 3600) * 1000 }},{{ vote.c }}]{% endfor %}]
             }]
             ,
             navigation: {
