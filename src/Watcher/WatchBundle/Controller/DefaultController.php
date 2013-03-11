@@ -23,7 +23,7 @@ class DefaultController extends Controller
 
   public function indexAction(Request $request)
   {
-    $em = $this->getDoctrine()->getEntityManager();
+    $em = $this->getDoctrine()->getManager();
     $repository = $em->getRepository('WatcherWatchBundle:Vote');
 
     $query = "SELECT COUNT(p.ip) as c, p.datevote as datev FROM WatcherWatchBundle:Vote p WHERE p.liste = :listename GROUP BY p.datevote";
@@ -67,7 +67,7 @@ class DefaultController extends Controller
 	    $this->get('session')->getFlashBag()->add('notice','Cette liste n\'existe pas ! Retente ta chance ! ');
 	  } else {
 
-	        $em = $this->getDoctrine()->getEntityManager();
+	        $em = $this->getDoctrine()->getManager();
 
 
 		$vote = $em->createQueryBuilder()
